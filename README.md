@@ -1,7 +1,8 @@
 # Project 2
 
-I found a dataset on the infrastructure of swimming spots published by the Department of Justice and Health on the Open Data platform of the state of Schleswig-Holstein. I combined it with a second one that had the names and descriptions of all swimming spots. The data was in horrible shape so it was a huge effort to get it all cleaned up. <br>
+I found a dataset on the infrastructure of swimming spots published by the Department of Justice and Health on the Open Data platform of the state of Schleswig-Holstein. I combined it with a second one that had the names and descriptions of all swimming spots. The data was in horrible shape so it was a huge effort to get it all cleaned up.<br>
 After that was done, I explored the dataset by asking some questions to determine which aspects would be most interesting for a story. Of course, this kind of data would be perfect for a general service piece, but I was very intrigued when I saw that there was information on wheelchair and public transport accessibility as I am very interested in questions of instrastructure and who it excludes from full participation. I though about further aspects that might prevent people from being able to go to the beach and decided to also look at the cost. For that, I scraped a website with all the beach tax amounts for baltic seaside resorts but ended up not needing that information. Originally, I wanted to compare the total cost in 2021 (before inflation really hit) to now but it was too complicated to find the historical data so I ended up just using the current data for a specific example and adding some remarks about changes in the graphic which I think works too.<br>
+My main analysis is in the notebook called "Bathing infrastructure".<br>
 The dataset claimed that only 2% of all swimming spots had access to public transport. That seemed unrealistic to me - even for a state known for its bad public transport infrastructure. (I tried to figure out how they determined which spots had public transport but it's not in the documentation and from looking at the data, I couln't make any sense of it. I thought it was just the spots that had the exact same name as the bus stop or the ones with a train stop, but neither seems to be the case.) So I decided to do a spatial analysis with QGIS myself to determine which swimming spots are within a 10-minute walk from a bus/train stop. <br>
 I already had the coordinates of all swimming spots and found the following geodata for my analysis:
 <ul>
@@ -11,7 +12,7 @@ I already had the coordinates of all swimming spots and found the following geod
 <li>Double-checked with train stations to see whether there are spots that would be accessible by train but not by bus (turns out there are none)</li>
 </ul>
 
-I wanted to show that there are further problems with the infrastructe of public transport: infrequent service, complicated routes etc. So I compared the route taking a car and taking a bus using Google Maps. My initial idea was to to have them animated, showing the difference in travel time. I tried to get a Mapbox template to work for that but it was really difficult to get the code to do exactly what I wanted so I made a static map instead.<br>
+I wanted to show that there are further problems with the infrastructe of public transport: infrequent service, complicated routes etc. So I compared the route taking a car and taking a bus using Google Maps. My initial idea was to to have them animated, showing the difference in travel time. I tried to get a Mapbox template to work for that but (even with great TA help) it was really difficult to get the code to do exactly what I wanted so I made a static map instead.<br>
 I enjoyed exploring a dataset with lots of different information to see what I could pull out of it. This was a great opportunity to practice mapping skills and doing a spatial analysis with QGIS on my own. It was also nice to practice HTML/CSS/Javascript skills by combining different templates so the final result would look nice(-ish). With more time, I would have liked to do more styling (and try to get the animation to work). I'm also not super happy with the writing, but alas.<br>
 I had a look at the distribution of swimming spots and also at income levels for each district but didn't really find any interesting patterns that I felt would be worth incorporating into my project.<br>
 
@@ -20,6 +21,8 @@ All data sources I used:
 <li>https://opendata.schleswig-holstein.de/dataset/badegewasser-infrastruktur-aktuell</li>
 <li>https://opendata.schleswig-holstein.de/dataset/badegewasser-stammdaten-2025-04-01</li>
 <li>https://opendata.schleswig-holstein.de/dataset/haltestellenverzeichnis</li>
+<li>https://download.geofabrik.de/europe/germany/schleswig-holstein.html</li>
+<li>https://opendata.schleswig-holstein.de/dataset/bahnstationen</li>
 <li>https://public.opendatasoft.com/explore/dataset/georef-germany-land/export/?disjunctive.lan_code&disjunctive.lan_name&sort=year&refine.lan_name=Schleswig-Holstein&location=5,51.32941,10.45403&basemap=jawg.light</li>
 <li>https://www.st-peter-ording.de/strandkoerbe/</li>
 <li>https://gosch.de/speisekarten/st-peter-ording-buhne1/</li>
