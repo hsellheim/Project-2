@@ -1,0 +1,413 @@
+<!-- The originial version of this template was made by Johnathan Soma and then messed with and customized by Aaron Reiss -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Swimming infrastructure in Northern Germany</title>
+    <style>
+      .content {
+      max-width: 640px;
+      margin: auto;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      }
+
+      h1{
+        max-width: 50%;
+        margin: 4rem auto 2rem auto;
+        font-family: 'Lora', Georgia, serif;
+        color: white;
+        font-weight: bold;
+        font-size: 3em;
+        line-height: 1.1;
+        }
+      
+      p{
+        max-width: 50%;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+        margin: 0 auto 2rem auto;
+        font-size: 19px;
+        line-height: 150%;
+        text-rendering: optimizeLegibility;
+        color: #15607a;
+       }
+
+      a{
+      color: #18a1cd;
+       } 
+
+      .subhead{
+      font-family: 'Lora', Georgia, serif;
+      color: white;
+      }
+
+      .picture{
+      max-width: 640px;
+      margin: 0 auto;
+      display: block;
+      }
+
+      #scrolly {
+        position: relative;
+        padding: 1rem;
+      }
+
+      .scrolly-overlay {
+        position: relative;
+        padding: 0;
+        max-width: 35rem;
+        margin-left: 2px;
+        margin-right: auto;
+      }
+
+      .sticky-thing {
+        position: -webkit-sticky;
+        position: sticky;
+        left: 0;
+        width: 100%;
+        margin: 0;
+        z-index: 0;
+        top: 0;
+        height: 100vh;
+        /* Center everything inside */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .step {
+        margin: 0 auto 2rem auto;
+        margin-bottom: 25rem;
+        background-color: #eee;
+        background-color: #fff;
+        color: black;
+        text-align: center;
+      }
+
+      .step p {
+        padding: 1rem;
+        font-size: 1.25rem;
+        border: black;
+      }
+
+      .photoDiv {
+        width: 49%;
+        margin-right: 0px;
+        margin-left: auto;
+        display: block;
+      }
+
+      .hidden { visibility: hidden; }
+
+      /* When it's less than 700 pixels wide, do normal scrollytelling */
+      @media only screen and (min-width: 700px) {
+        #scrolly.side-by-side {
+          display: flex;
+        }
+
+        #scrolly.side-by-side > div {
+          flex-basis: 0;
+          flex-grow: 1;
+          flex-shrink: 1;
+          padding: 0.75em;
+        }
+
+        #scrolly.side-by-side .scrolly-overlay {
+          margin-top: 70vh;
+          order: 0;
+          /* Change these to adjust sizing options */
+          min-width: 15rem;
+          max-width: 20rem;
+        }
+
+        #scrolly.side-by-side .sticky-thing {
+          order: 1;
+          flex-grow: 2;
+        }
+
+        .with-image-bg {
+            position: relative;
+            background-size: cover;
+            margin-bottom: 2em;
+
+            /* Center everything inside */
+            min-height: 70svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            /* White text with a shadow */
+            color: white;
+            text-shadow: 0px 0px 30px black,
+                0px 0px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .with-image-bg {
+            background-image: url('beach.jpg');
+        }
+
+        .header {
+            padding: 3em 0;
+        }
+
+
+        .full-width figure {
+            text-align: center;
+        }
+
+        .headercontent {
+            padding-left: 0.5em;
+            padding-right: 0.5em;
+        }
+
+        .footer {
+            background: #f4f4f4;
+            text-align: center;
+            font-size: 0.8em;
+            margin-top: 4em;
+            padding: 4em 0;
+            background-color: white
+        }
+
+      }
+    </style>
+	<script src="https://unpkg.com/intersection-observer@0.5.1/intersection-observer.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/scrollama/3.0.4/scrollama.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.3.0/d3.min.js"></script>
+	
+  </head>
+
+  <body>
+  <div class="header with-image-bg">
+      <div class="headercontent">
+	<h1>Let's go to the beach... if we can get there</h1>
+
+  <p class="subhead">Northern Germany has many spots to go swimming. But a look at the data shows: Who actually gets to go to the beach is a question of infrastructure.</p>
+  
+      </div>
+  </div>
+  <p><i>By Hanna Sellheim</i></p>
+
+  <p>It is a beautiful sunny Saturday in the state of Schleswig-Holstein in Northern Germany. The Müllers, an average Northern German family of four, want to spend the day swimming. Where should they go?</p>
+
+      <section id="scrolly">
+        <div class="sticky-thing">
+<!-- Sticky Thing 1 goes below this line -->
+
+<img id="scrollyPhoto" class="photoDiv" src="map1.png">
+
+<!-- Sticky Thing 1 goes above this line -->
+
+        </div>
+
+        <div class="scrolly-overlay">
+          <div class="step" id="step1">
+            <p>
+Here are all the places where you can go swimming in Schleswig-Holstein. What a variety of choices!
+</p>
+          </div>
+          <div class="step" id="step2">
+            <p>However, family Müller does not have a car. That's not uncommon in their state: Only <a href="https://www.statistikportal.de/de/nachhaltigkeit/ergebnisse/ziel-12-nachhaltiger-konsum-und-produktion/pkw-dichte">588 out of 1000 inhabitants of Schleswig-Holstein owned a car in 2024</a>. That leaves them with these option: all swimmings spots that are accessible with public transport.</p>
+          </div>
+          <div class="step" id="step3">
+            <p>But they want to go to the coast, not swim in a river or a lake.</p>
+          </div>
+          <div class="step" id="step4">
+            <p>They would prefer if the beach had restrooms.</p>
+          </div>
+            <div class="step" id="step5">
+            <p>And they want to avoid melanoma so maybe a place that has shade.</p>
+          </div>
+          <div class="step" id="step6">
+            <p>And perhaps showers and changing rooms, too?</p>
+          </div>
+          <div class="step" id="step7">
+            <p>It would be great if Pfiffi, the family dog, could go with them!</p>
+          </div>
+          <div class="step" id="step8">
+            <p>Oh no, that's too far away!</p>
+          </div>
+        </div>
+      </section>
+    
+      <p>Let's say the Müllers live in Schwentinental, a midsize town right outside of the state capital Kiel, in the dictrict with the lowest per-capita income in the whole state. Their connection to public transport is not terrible – they even have a train station.</p>
+      <p>But: Of all swimming spots in the state, 38 percent are not within a 10-minute walk from a train or bus stop, as a spatial analysis shows.</p>
+      <div class="content">
+      <iframe title="More than a third of swimming spots are not public transport accessible" aria-label="Pie Chart" id="datawrapper-chart-S9g3x" src="https://datawrapper.dwcdn.net/S9g3x/4/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="588" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}})}();
+      </script>
+      </div>
+      <br>
+      <p>But even if a swimming spot is close to a bus stop, that does not automatically mean that it is easily accessible. What if the Müllers adjusted their expectations and decided to spend the day at Schönberg beach, a beach in their district?</p>
+      <p>Schönberg beach is a mere 30-minute car ride away from the Müllers. With the bus, it takes them 90 minutes to get there, including a changeover at a busy intersection in Kiel where they might miss their connecting bus.</p>
+      <img src="map9.png" class="picture">
+      <br>
+      <p>Things would get even more complicated if any of the family members had a disability.</p>
+      <div class="content">
+      <iframe title="Only very few swimming spots are wheelchair-accessible" aria-label="Pie Chart" id="datawrapper-chart-LezUZ" src="https://datawrapper.dwcdn.net/LezUZ/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="409" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}})}();
+      </script>
+      </div>
+      <br>
+      <p>But at least everybody can afford a day at the beach since it is a public place, right?</p>
+      <p>Instead of going on a bus odyssey, the Müllers borrow their friends' car to take a trip to St.Peter-Ording, one of the biggest beaches on the North Sea Coast. Let’s see what a day of beach fun costs them. </p>
+      <div class="content">
+      <iframe title="A beach trip to St. Peter-Ording (Germany) costs a family of four 80 euros" aria-label="Stacked Columns" id="datawrapper-chart-Viy6U" src="https://datawrapper.dwcdn.net/Viy6U/2/" scrolling="no" frameborder="0" style="width: 0; min-width: 100% !important; border: none;" height="468" data-external="1"></iframe><script type="text/javascript">!function(){"use strict";window.addEventListener("message",function(a){if(void 0!==a.data["datawrapper-height"]){var e=document.querySelectorAll("iframe");for(var t in a.data["datawrapper-height"])for(var r,i=0;r=e[i];i++)if(r.contentWindow===a.source){var d=a.data["datawrapper-height"][t]+"px";r.style.height=d}}})}();
+      </script>
+      </div>
+      <br>
+      <p>A total of 80 euros... and that doesn't even include the cost for gas or drinks. In 2025, the family also pays considerably more than they would have a couple of years ago.</p>
+      <p>So, as summers are getting increasingly hotter, will everybody have the same chances to cool off?</p>
+      <p class="footer">You can find all the data and an explanation of my analysis here.</p>
+    <script>
+
+      
+    /* Scrollytelling code goes under here */
+
+      // Code for the Photo Div #1 (aka #scrollyPhoto1)
+        
+        // Entering Step One
+      d3.select("#step1").on('stepin',function(e) {
+        console.log("We've arrived at STEP ONE in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map1.png");
+      })
+
+        // Entering Step Two
+      d3.select("#step2").on('stepin',function(e) {
+        console.log("We've arrived at STEP TWO in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map2.png");
+      })
+
+       // Entering Step Three
+      d3.select("#step3").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map3.png");
+
+      })
+
+      d3.select("#step4").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map4.png");
+      })
+
+      d3.select("#step5").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map5.png");
+      })
+
+      d3.select("#step6").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map6.png");
+      })
+
+      d3.select("#step7").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map7.png");
+      })
+
+      d3.select("#step8").on('stepin',function(e) {
+        console.log("We've arrived at STEP Three in the photo div")
+        d3.select("#scrollyPhoto").attr("src", "map8.png");
+      })
+
+    </script>
+
+<script>
+    const scroller = scrollama();
+
+	scroller
+		.setup({
+			step: "#scrolly .scrolly-overlay .step",
+			offset: 0.5,
+			debug: false
+		})
+		.onStepEnter(function({ element, index, direction}) {
+			const event = new CustomEvent('stepin', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		})
+		.onStepExit(function({ element, index, direction }) {
+			const event = new CustomEvent('stepout', { detail: { direction: direction } })
+			element.dispatchEvent(event);
+		});
+
+	window.addEventListener("resize", scroller.resize);
+    </script>
+
+
+    <!-- ai2html resizer script -->
+
+<script type="text/javascript">
+  (function() {
+      // only want one resizer on the page
+      if (document.documentElement.className.indexOf("g-resizer-v3-init") > -1) return;
+      document.documentElement.className += " g-resizer-v3-init";
+      // require IE9+
+      if (!("querySelector" in document)) return;
+      function resizer() {
+          var elements = Array.prototype.slice.call(document.querySelectorAll(".g-artboard[data-min-width]")),
+              widthById = {};
+          elements.forEach(function(el) {
+              var parent = el.parentNode,
+                  width = widthById[parent.id] || parent.getBoundingClientRect().width,
+                  minwidth = el.getAttribute("data-min-width"),
+                  maxwidth = el.getAttribute("data-max-width");
+              widthById[parent.id] = width;
+
+              if (+minwidth <= width && (+maxwidth >= width || maxwidth === null)) {
+                  el.style.display = "block";
+              } else {
+                  el.style.display = "none";
+              }
+          });
+          try {
+              if (window.parent && window.parent.$) {
+                  window.parent.$("body").trigger("resizedcontent", [window]);
+              }
+              if (window.require) {
+                  require(['foundation/main'], function() {
+                      require(['shared/interactive/instances/app-communicator'], function(AppCommunicator) {
+                          AppCommunicator.triggerResize();
+                      });
+                  });
+              }
+          } catch(e) { console.log(e); }
+      }
+
+      document.addEventListener('DOMContentLoaded', resizer);
+      // feel free to replace throttle with _.throttle, if available
+      window.addEventListener('resize', throttle(resizer, 200));        
+
+      function throttle(func, wait) {
+          // from underscore.js
+          var _now = Date.now || function() { return new Date().getTime(); },
+              context, args, result, timeout = null, previous = 0;
+          var later = function() {
+              previous = _now();
+              timeout = null;
+              result = func.apply(context, args);
+              if (!timeout) context = args = null;
+          };
+          return function() {
+              var now = _now(), remaining = wait - (now - previous);
+              context = this;
+              args = arguments;
+              if (remaining <= 0 || remaining > wait) {
+                  if (timeout) {
+                      clearTimeout(timeout);
+                      timeout = null;
+                  }
+                  previous = now;
+                  result = func.apply(context, args);
+                  if (!timeout) context = args = null;
+              } else if (!timeout && options.trailing !== false) {
+                  timeout = setTimeout(later, remaining);
+              }
+              return result;
+          };
+      }
+
+     
+  })();
+</script>
+
+  </body>
+</html>
