@@ -100,6 +100,17 @@
 
       .hidden { visibility: hidden; }
 
+      @media (max-width: 640px) {
+      body {
+        font-size: 18px;
+      }
+      }
+
+      .content {
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+      }
+
       /* When it's less than 700 pixels wide, do normal scrollytelling */
       @media only screen and (min-width: 700px) {
         #scrolly.side-by-side {
